@@ -23,8 +23,8 @@ public class Movie {
     private String movieType;
     private String releaseDate;
     private boolean blockBuster;
-    private String food;
-    private String costOfProduction;
+    private FoodStore food;
+    private CostOfProduction costOfProduction;
     /*
     @return blockbuster
     */
@@ -59,29 +59,27 @@ public class Movie {
         this.movieType= movieType;
         this.releaseDate= releaseDate;
         this.blockBuster= blockBuster;
-        FoodStore foodtype= null;
-        CostOfProduction cost= null;
         switch(movieType){
             case "Bollywood":
-                foodtype= FoodStore.DAL_MAKHNI;
-                cost= CostOfProduction.MEDIUM;
+                food= FoodStore.DAL_MAKHNI;
+                costOfProduction= CostOfProduction.MEDIUM;
                 break;
             case "Hollywood":
-                foodtype= FoodStore.PEPPER_STEAK;
-                cost= CostOfProduction.HIGH;
+                food= FoodStore.PEPPER_STEAK;
+                costOfProduction= CostOfProduction.HIGH;
                 break;
             case "Tollywood":
-                foodtype= FoodStore.DOSA;
-                cost= CostOfProduction.LOW;
+                food= FoodStore.DOSA;
+                costOfProduction= CostOfProduction.LOW;
                 break;
         }
-        this.food=foodtype.toString();
-        this.costOfProduction= cost.toString();
     }
     /*
     This is override of toString() to display an instance of Movie class
      */
     public String toString(){
-        return ("\nMovie: "+movieName +"\nRelease Year: "+ releaseYear + "\nLanguage: "+ language+ "\nGenre: "+ genre+ "\nMovie Type: "+movieType+ "\nRelease Date: "+ releaseDate+ "\nBlockbuster: "+ blockBuster+"\nFood: "+food+"\nCpst of Production: "+costOfProduction+"\n");
+        return ("\nMovie: "+movieName +"\nRelease Year: "+ releaseYear + "\nLanguage: "+ language+ "\nGenre: "+ genre
+                + "\nMovie Type: "+movieType+ "\nRelease Date: "+ releaseDate+ "\nBlockbuster: "+ blockBuster+"\nFood: "
+                +food.toString()+"\nCost of Production: "+costOfProduction.toString()+"\n");
     }
 }
