@@ -1,16 +1,14 @@
-package movie;
+package movieApp;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 import java.util.Scanner;
-
-public class MovieApp {
-    void showMovie(ArrayList<Movie> mov){
-        for (Movie movie : mov) {
-            System.out.println(movie);
-        }
-    }
+/*
+This is MovieApp class used for interaction between Movie class and Display class
+ */
+public class MovieApp{
+    /*
+    method to show main menu
+     */
     void menu(ArrayList<Movie> mov){
         int option;
         Scanner scanner = new Scanner(System.in);
@@ -26,7 +24,7 @@ public class MovieApp {
                     typeMenu(mov);
                     break;
                 case 3:
-                    isBlockbuster(mov);
+                    isBlockBuster(mov);
                     break;
                 case 4:
                     return;
@@ -34,15 +32,25 @@ public class MovieApp {
                     System.out.println("*Enter a proper value (1-4 only)*");
             }
         }while(option!=4);
-        //System.out.println(option);
     }
+    /*
+    method to show a list of all Movies
+     */
+    void showMovie(ArrayList<Movie> mov){
+        for (Movie movie : mov) {
+            System.out.println(movie);
+        }
+    }
+    /*
+    method to show type menu according to the type of the Movie
+     */
     void typeMenu(ArrayList<Movie> mov){
         Scanner scanner= new Scanner(System.in);
-        int genreOption;
+        int typeOption;
         do{
             System.out.print("\n======AVAIALBLE TYPES======\n1.Bollywood\n2.Tollwood\n3.Hollywood\n4.Go Back to Main Menu\nSelect a Movie Type: ");
-            genreOption= scanner.nextInt();
-            switch(genreOption){
+            typeOption= scanner.nextInt();
+            switch(typeOption){
                 case 1:
                     showBollywoodMovies(mov);
                     break;
@@ -58,8 +66,11 @@ public class MovieApp {
                     System.out.println("*Enter a proper value (1-6 only)*");
                     break;
             }
-        }while(genreOption!=4);
+        }while(typeOption!=4);
     }
+    /*
+    Method to show a list of Bollywood type of Movies
+     */
     void showBollywoodMovies(ArrayList<Movie> mov){
         ArrayList<Movie> movieList= new ArrayList<>();
         for(Movie movie:mov){
@@ -70,6 +81,9 @@ public class MovieApp {
         for(Movie movie:movieList)
             System.out.println(movie);
     }
+    /*
+    Method to show a list of Tollywood type of Movies
+     */
     void showTollywoodMovies(ArrayList<Movie> mov){
         ArrayList<Movie> movieList= new ArrayList<>();
         for(Movie movie:mov){
@@ -80,6 +94,9 @@ public class MovieApp {
         for(Movie movie:movieList)
             System.out.println(movie);
     }
+    /*
+    Method to show a list of Hollywood type of Movies
+     */
     void showHollywoodMovies(ArrayList<Movie> mov){
         ArrayList<Movie> movieList= new ArrayList<>();
         for(Movie movie:mov){
@@ -90,11 +107,14 @@ public class MovieApp {
         for(Movie movie:movieList)
             System.out.println(movie);
     }
-    void isBlockbuster(ArrayList<Movie> mov){
+    /*
+    Method to show whether the Movie is a blockbuster or not
+     */
+    public void isBlockBuster(ArrayList<movieApp.Movie> mov) {
         Scanner scanner=new Scanner(System.in);
-        System.out.println("\n\nEnter the name of the Movie: ");
+        System.out.print("\nEnter the name of the Movie: ");
         String movieName=scanner.nextLine();
-        for(Movie movie:mov){
+        for(movieApp.Movie movie:mov){
             if(movie.getMovieName().equals(movieName)){
                 if(movie.getBlockBuster()){
                     System.out.println("\nMovie "+movieName+" is a Blockbuster movie!");
@@ -103,24 +123,5 @@ public class MovieApp {
             }
         }
         System.out.println("\nMovie "+movieName+" is not a Blockbuster movie!");
-    }
-    public static void main(String[] args){
-        Random rd = new Random(); // creating Random object
-
-        Movie mov1= new Movie("Sholay", 1960, "Hindi", "Drama", "Bollywood", "01-01-1960", rd.nextBoolean());
-        Movie mov2= new Movie("Lakshya", 2002, "Hindi", "War", "Bollywood", "02-04-2004", rd.nextBoolean());
-        Movie mov3= new Movie("Shivaay", 2005, "Tamil", "Dramatic", "Tollywood","19-02-2005", rd.nextBoolean());
-        Movie mov4= new Movie("Titanic", 1997, "English", "Romantic", "Hollywood","07-01-1997", rd.nextBoolean());
-        Movie mov5= new Movie("Avengers", 2012, "English", "Thriller", "Hollywood","14-07-2012", rd.nextBoolean());
-
-        ArrayList<Movie> movies= new ArrayList<>();
-
-        movies.add(mov1);
-        movies.add(mov2);
-        movies.add(mov3);
-        movies.add(mov4);
-        movies.add(mov5);
-        MovieApp movieApp= new MovieApp();
-        movieApp.menu(movies);
     }
 }
