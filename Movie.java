@@ -12,6 +12,12 @@ enum CostOfProduction{
     HIGH, MEDIUM, LOW
 }
 /*
+This is the MovieType enum used to assign type of Movie from Bollywood, Hollywood, Tollywood
+ */
+enum MovieType{
+    BOLLYWOOD, HOLLYWOOD, TOLLYWOOD
+}
+/*
 This is the Movie class, Central class for the MovieApp Architecture. It has movieName, realeaseYear, language, genre, movieType, releaseDate,
 blockbuster, food and costOfProduction as data members.
  */
@@ -20,7 +26,7 @@ public class Movie {
     private int releaseYear;
     private String language;
     private String genre;
-    private String movieType;
+    private MovieType movieType;
     private String releaseDate;
     private boolean blockBuster;
     private FoodStore food;
@@ -40,7 +46,7 @@ public class Movie {
     /*
     @return movieType
      */
-    public String getMovieType(){
+    public MovieType getMovieType(){
         return movieType;
     }
     /*
@@ -51,7 +57,7 @@ public class Movie {
     /*
     Base Constructor used for insertion with movieName, releaseYear, language, genre, movieType, releaseDate, blockBuster as Arguments
      */
-    Movie(String movieName, int releaseYear, String language, String genre, String movieType, String releaseDate, boolean blockBuster){
+    Movie(String movieName, int releaseYear, String language, String genre, MovieType movieType, String releaseDate, boolean blockBuster){
         this.movieName= movieName;
         this.releaseYear= releaseYear;
         this.language= language;
@@ -60,15 +66,15 @@ public class Movie {
         this.releaseDate= releaseDate;
         this.blockBuster= blockBuster;
         switch(movieType){
-            case "Bollywood":
+            case BOLLYWOOD:
                 food= FoodStore.DAL_MAKHNI;
                 costOfProduction= CostOfProduction.MEDIUM;
                 break;
-            case "Hollywood":
+            case HOLLYWOOD:
                 food= FoodStore.PEPPER_STEAK;
                 costOfProduction= CostOfProduction.HIGH;
                 break;
-            case "Tollywood":
+            case TOLLYWOOD:
                 food= FoodStore.DOSA;
                 costOfProduction= CostOfProduction.LOW;
                 break;
@@ -79,7 +85,7 @@ public class Movie {
      */
     public String toString(){
         return ("\nMovie: "+movieName +"\nRelease Year: "+ releaseYear + "\nLanguage: "+ language+ "\nGenre: "+ genre
-                + "\nMovie Type: "+movieType+ "\nRelease Date: "+ releaseDate+ "\nBlockbuster: "+ blockBuster+"\nFood: "
+                + "\nMovie Type: "+getMovieType()+ "\nRelease Date: "+ releaseDate+ "\nBlockbuster: "+ blockBuster+"\nFood: "
                 +food.toString()+"\nCost of Production: "+costOfProduction.toString()+"\n");
     }
 }

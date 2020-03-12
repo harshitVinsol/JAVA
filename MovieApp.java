@@ -53,9 +53,9 @@ public class MovieApp{
     /*
     Method to return whether the Movie is a blockbuster or not
      */
-    public boolean isBlockBuster(ArrayList<movieApp.Movie> mov, String movieName) {
+    public boolean isBlockBuster(String movieName) {
         boolean finalBlockBuster= false;
-        for(movieApp.Movie movie:mov){
+        for(Movie movie:movieList){
             if(movie.getMovieName().equals(movieName)){
                 if(movie.getBlockBuster()){
                     finalBlockBuster= true;
