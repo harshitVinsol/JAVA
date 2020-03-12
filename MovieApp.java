@@ -29,21 +29,21 @@ public class MovieApp{
         switch(typeMovie){
             case BOLLYWOOD:
                 for(Movie mov: movieList){
-                    if(mov.getMovieType().equals("Bollywood"))
+                    if(mov.getMovieType().equals(MovieType.BOLLYWOOD))
                         typeMovieList.add(mov);
                 }
                 break;
 
             case TOLLYWOOD:
                 for(Movie mov: movieList){
-                    if(mov.getMovieType().equals("Tollywood"))
+                    if(mov.getMovieType().equals(MovieType.TOLLYWOOD))
                         typeMovieList.add(mov);
                 }
                 break;
 
             case HOLLYWOOD:
                 for(Movie mov: movieList){
-                    if(mov.getMovieType().equals("Hollywood"))
+                    if(mov.getMovieType().equals(MovieType.HOLLYWOOD))
                         typeMovieList.add(mov);
                 }
                 break;
