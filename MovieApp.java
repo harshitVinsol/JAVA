@@ -24,24 +24,24 @@ public class MovieApp{
     /*
     method to return a list of type of movie selected from Bollywood, Hollywood and Tollywood
      */
-    ArrayList<Movie> showTypeMovie(String typeMovie){
+    ArrayList<Movie> showTypeMovie(MovieType typeMovie){
         ArrayList<Movie> typeMovieList= new ArrayList<Movie>();
         switch(typeMovie){
-            case "Bollywood":
+            case BOLLYWOOD:
                 for(Movie mov: movieList){
                     if(mov.getMovieType().equals("Bollywood"))
                         typeMovieList.add(mov);
                 }
                 break;
 
-            case "Tollywood":
+            case TOLLYWOOD:
                 for(Movie mov: movieList){
                     if(mov.getMovieType().equals("Tollywood"))
                         typeMovieList.add(mov);
                 }
                 break;
 
-            case "Hollywood":
+            case HOLLYWOOD:
                 for(Movie mov: movieList){
                     if(mov.getMovieType().equals("Hollywood"))
                         typeMovieList.add(mov);
